@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+
+.t1{
+  padding:5px;
+  border: 2px black solid;
+}
+
+table{
+  border-collapse: collapse;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="/" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="/profile" class="w3-bar-item w3-button w3-padding-large w3-hide-small">PROFILE</a>
+    <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LOGOUT</a>
+  </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- The Band Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="band">
+    <h1>Welcome to the Profile Page</h1>
+    <br><br>
+    <h3>List of current stocks</h3>
+    <table>
+        <th class="t1">Stock_id</th>
+        <th class="t1">Number of stocks</th>
+        <br>
+        {% for docs in session["results"] %}
+        <br>
+        <tr class="t1">
+            <td class="t1">{{docs["id"]}}</td>
+            <td class="t1">{{docs["number"]}}</td>
+        </tr>
+        <br>
+        {% endfor %}
+        </table>
+        <br><br>
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.stock_id.label}}: {{form.stock_id}}
+        <br><br>
+        {{form.number.label}}: {{form.number}}
+        <br><br>
+        {{form.action.label}}: {{form.action}}
+        <br>
+        {{form.submitstock()}}
+        <br>
+    </form>
+
+    </div>
+<!-- End Page Content -->
+</div>
+
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+    <a href="/logout" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LOGOUT</a>
+</footer>
+
+</body>
+</html>

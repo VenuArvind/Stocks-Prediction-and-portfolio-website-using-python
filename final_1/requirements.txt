@@ -1,0 +1,8 @@
+flask
+pymongo
+requests
+flask_wtf
+lxml
+bs4
+selenium
+pandas
